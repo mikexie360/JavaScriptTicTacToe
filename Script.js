@@ -61,6 +61,8 @@ function validateMove(position) {
 var winCombinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
                        [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 
+var turns = 0;
+
 // Determins if the passed in player has three in a row
 function checkWin(player) {
     for (var i = 0; i < winCombinations.length; i++) {
@@ -77,6 +79,14 @@ function checkWin(player) {
     return false;
 }
 
+function checkTie(){
+    turns += 1;
+    if (turns === 9){
+        return true;
+    }
+    return false;
+}
+
 function playTurn(player) {
 
     console.log('Your turn player: ' + player);
@@ -88,6 +98,10 @@ function playTurn(player) {
             printBoard();
             if (checkWin(player) === true) {
                 console.log('Winner Winner!');
+                return;
+            }
+            if (checkTie()){
+                console.log("Game is Over, It is a tie");
                 return;
             }
             if (player === 'X') {
