@@ -15,6 +15,7 @@ Players 'X' and 'O' take turn inputing their position on the command line using 
 // npm install prompt
 var prompt = require('prompt');
 
+// the javascript board. Made using a javascript object.
 var board = {
     1: ' ',
     2: ' ',
@@ -43,9 +44,11 @@ function printBoard() {
 
 function isInt(value) {
     var x;
+    // checks if the number is a number or not
     if (isNaN(value)) {
         return false;
     }
+    // checks if the number is a float
     x = parseFloat(value);
     return (x | 0) === x;
 }
@@ -61,7 +64,6 @@ function validateMove(position) {
 var winCombinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
                        [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]];
 
-var turns = 0;
 
 // Determins if the passed in player has three in a row
 function checkWin(player) {
@@ -78,6 +80,8 @@ function checkWin(player) {
     }
     return false;
 }
+
+var turns = 0;
 
 function checkTie(){
     turns += 1;
@@ -116,6 +120,9 @@ function playTurn(player) {
     });
 }
 
+
+// initial start game.
+// player X goes first
 console.log('Game started: \n' +
     ' 1 | 2 | 3 \n' +
     ' --------- \n' +
