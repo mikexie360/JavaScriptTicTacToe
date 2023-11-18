@@ -23,38 +23,23 @@ var winCombinations = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7],
 player = "X";
 function mark(position) {
 
-    if (player === "X") { 
-        document.getElementById("b" + position).value = "X"; 
-        document.getElementById("b" + position).disabled = true; 
-        board[position]='X';
-        if(checkWin(player)){
-            document.getElementById("ins").innerHTML= "Player X Won!";
-            disablebtns();
-            return;
-        } else if(checkTie()){
-            document.getElementById("ins").innerHTML= "It is a Tie!";
-            disablebtns();
-            return;
-        } 
-        else {
-            player = "O";
-        }
+    document.getElementById("b" + position).value = player; 
+    document.getElementById("b" + position).disabled = true; 
+    board[position]=player;
+    if(checkWin(player)){
+        document.getElementById("ins").innerHTML= "Player "+player+" Won!";
+        disablebtns();
+        return;
+    } else if(checkTie()){
+        document.getElementById("ins").innerHTML= "It is a Tie!";
+        disablebtns();
+        return;
     } 
-    else { 
-        document.getElementById("b" + position).value = "O"; 
-        document.getElementById("b" + position).disabled = true;
-        board[position] = 'O'; 
-        if(checkWin(player)){
-            document.getElementById("ins").innerHTML= "Player O Won!";
-            disablebtns();
-            return;
-        } else if(checkTie()){
-            document.getElementById("ins").innerHTML= "It is a Tie!";
-            disablebtns();
-            return;
-        } 
-        else {
-            player = "X";
+    else {
+        if (player ==="X"){
+            player ="O";
+        } else {
+            player="X";
         }
     }
 }
